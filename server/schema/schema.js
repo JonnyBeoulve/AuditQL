@@ -53,6 +53,18 @@ const RootQuery = new GraphQLObjectType({
             resolve(parent, args) {
                 return _.find(auditors, { id: args.id });
             }
+        },
+        audits: {
+            type: new GraphQLList(AuditType),
+            resolve(parent, args){
+                return audits;
+            }
+        },
+        auditors: {
+            type: new GraphQLList(AuditorType),
+            resolve(parent, args){
+                return auditors;
+            }
         }
     }
 });
