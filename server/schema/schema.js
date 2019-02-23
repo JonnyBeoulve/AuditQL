@@ -8,7 +8,8 @@ const {
     GraphQLString,
     GraphQLSchema,
     GraphQLID,
-    GraphQLList
+    GraphQLList,
+    GraphQLNonNull
 } = graphql;
 
 // Import mock data.
@@ -96,9 +97,9 @@ const Mutation = new GraphQLObjectType({
         addAudit: {
             type: AuditType,
             args: {
-                name: { type: GraphQLString },
-                genre: { type: GraphQLString },
-                auditorId: { type: GraphQLID }
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                genre: { type: new GraphQLNonNull(GraphQLString) },
+                auditorId: { type: new GraphQLNonNull(GraphQLID) }
             },
             resolve(parent, args){
                 let audit = new Audit({
