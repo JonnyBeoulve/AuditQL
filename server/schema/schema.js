@@ -8,7 +8,6 @@ const {
     GraphQLString,
     GraphQLSchema,
     GraphQLID,
-    GraphQLInt,
     GraphQLList
 } = graphql;
 
@@ -92,6 +91,22 @@ const Mutation = new GraphQLObjectType({
                     name: args.name
                 });
                 return auditor.save();
+            }
+        },
+        addAudit: {
+            type: AuditType,
+            args: {
+                name: { type: GraphQLString },
+                genre: { type: GraphQLString },
+                auditorId: { type: GraphQLID }
+            },
+            resolve(parent, args){
+                let audit = new Audit({
+                    name: args.name,
+                    genre: args.genre,
+                    auditorId: args.auditorId
+                });
+                return audit.save();
             }
         }
     }
