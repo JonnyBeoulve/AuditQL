@@ -11,3 +11,21 @@ const AuditType = new GraphQLObjectType({
         genre: { type: GraphQLString }
     })
 });
+
+// Create a root query that grabs all audits from the store.
+const RootQuery = new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields: {
+        audit: {
+            type: AuditType,
+            args: { id: { type: GraphQLString } },
+            resolve(parent, args){
+                return _.find(audits, { id: args.id });
+            }
+        }
+    }
+});
+
+module.exports = new GraphQLSchema({
+    query: RootQuery
+});
