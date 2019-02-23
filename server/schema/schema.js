@@ -1,12 +1,15 @@
 const graphql = require('graphql');
 const _ = require('lodash');
+const Audit = require('../models/audit');
+const Auditor = require('../models/auditor');
 
 const {
     GraphQLObjectType,
     GraphQLString,
     GraphQLSchema,
     GraphQLID,
-    GraphQLInt
+    GraphQLInt,
+    GraphQLList
 } = graphql;
 
 // Import mock data.
@@ -32,7 +35,13 @@ const AuditorType = new GraphQLObjectType({
     name: 'Auditor',
     fields: ( ) => ({
         id: { type: GraphQLID },
-        name: { type: GraphQLString }
+        name: { type: GraphQLString },
+        audits: {
+            type: new GraphQLList(AuditType),
+            resolve(parent, args){
+                //
+            }
+        }
     })
 });
 
