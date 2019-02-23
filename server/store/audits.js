@@ -1,4 +1,4 @@
-let audits = [
+module.exports = [
     { id: '1', genre: 'Compliance' },
     { id: '2', genre: 'Financial' },
     { id: '3', genre: 'Operational' },

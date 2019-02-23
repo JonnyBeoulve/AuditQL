@@ -1,7 +1,17 @@
 const graphql = require('graphql');
 const _ = require('lodash');
 
-const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
+const {
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLSchema,
+    GraphQLID,
+    GraphQLInt
+} = graphql;
+
+// Import mock data.
+const audits = require('../store/audits.js');
+const auditors = require('../store/auditors.js');
 
 // Define structure for audits.
 const AuditType = new GraphQLObjectType({
