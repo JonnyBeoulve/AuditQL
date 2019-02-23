@@ -78,6 +78,26 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
+// Add mutation for adding an auditor.
+const Mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        addAuditor: {
+            type: AuditorType,
+            args: {
+                name: { type: GraphQLString }
+            },
+            resolve(parent, args){
+                let auditor = new Auditor({
+                    name: args.name
+                });
+                return auditor.save();
+            }
+        }
+    }
+});
+
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: Mutation
 });
