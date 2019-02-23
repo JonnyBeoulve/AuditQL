@@ -18,7 +18,13 @@ const AuditType = new GraphQLObjectType({
     name: 'Audit',
     fields: ( ) => ({
         id: { type: GraphQLString },
-        genre: { type: GraphQLString }
+        genre: { type: GraphQLString },
+        auditor: {
+            type: AuditorType,
+            resolve(parent, args){
+                return _.find(auditors, { id: parent.auditorId });
+            }
+        }
     })
 });
 
