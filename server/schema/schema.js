@@ -12,10 +12,6 @@ const {
     GraphQLNonNull
 } = graphql;
 
-// Import mock data.
-const audits = require('../store/audits.js');
-const auditors = require('../store/auditors.js');
-
 // Define structures.
 const AuditType = new GraphQLObjectType({
     name: 'Audit',
