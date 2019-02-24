@@ -2,7 +2,6 @@ const graphql = require('graphql');
 const _ = require('lodash');
 const Audit = require('../models/audit');
 const Auditor = require('../models/auditor');
-
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -21,7 +20,7 @@ const AuditType = new GraphQLObjectType({
         auditor: {
             type: AuditorType,
             resolve(parent, args){
-                return _.find(auditors, { id: parent.auditorId });
+                return Auditor.findById(parent.auditorId);
             }
         }
     })
@@ -32,6 +31,7 @@ const AuditorType = new GraphQLObjectType({
     fields: ( ) => ({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
+        specialization: { type: GraphQLString },
         audits: {
             type: new GraphQLList(AuditType),
             resolve(parent, args){
@@ -49,26 +49,26 @@ const RootQuery = new GraphQLObjectType({
             type: AuditType,
             args: { id: { type: GraphQLString } },
             resolve(parent, args) {
-                return _.find(audits, { id: args.id });
+                return Audit.findById(args.id);
             }
         },
         auditor: {
             type: AuditorType,
             args: { id: { type: GraphQLID } },
             resolve(parent, args) {
-                return _.find(auditors, { id: args.id });
+                return Auditor.findById(args.id);
             }
         },
         audits: {
             type: new GraphQLList(AuditType),
             resolve(parent, args){
-                return audits;
+                return Audit.find({});
             }
         },
         auditors: {
             type: new GraphQLList(AuditorType),
             resolve(parent, args){
-                return auditors;
+                return Auditor.find({});
             }
         }
     }
@@ -82,12 +82,12 @@ const Mutation = new GraphQLObjectType({
             type: AuditorType,
             args: {
                 name: { type: GraphQLString },
-                specialization: { type: GraphQLString },
-                description: { type: GraphQLString }
+                specialization: { type: GraphQLString }
             },
             resolve(parent, args){
                 let auditor = new Auditor({
-                    name: args.name
+                    name: args.name,
+                    specialization: args.specialization
                 });
                 return auditor.save();
             }
