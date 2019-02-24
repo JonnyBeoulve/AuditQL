@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { GlobalStyle } from '../../theme';
 
+import { GlobalStyle } from '../../theme';
 import AuditList from '../../components/AuditList/AuditList';
 
 /* This container will list all audits. This will temporarily serve as the main container of
