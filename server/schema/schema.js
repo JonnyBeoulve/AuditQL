@@ -16,6 +16,7 @@ const AuditType = new GraphQLObjectType({
     name: 'Audit',
     fields: ( ) => ({
         id: { type: GraphQLString },
+        title: { type: GraphQLString },
         genre: { type: GraphQLString },
         auditor: {
             type: AuditorType,
@@ -95,13 +96,13 @@ const Mutation = new GraphQLObjectType({
         addAudit: {
             type: AuditType,
             args: {
-                name: { type: new GraphQLNonNull(GraphQLString) },
+                title: { type: new GraphQLNonNull(GraphQLString) },
                 genre: { type: new GraphQLNonNull(GraphQLString) },
                 auditorId: { type: new GraphQLNonNull(GraphQLID) }
             },
             resolve(parent, args){
                 let audit = new Audit({
-                    name: args.name,
+                    title: args.title,
                     genre: args.genre,
                     auditorId: args.auditorId
                 });

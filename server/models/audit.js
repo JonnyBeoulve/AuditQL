@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 // Define model for audit.
 const auditSchema = new Schema({
+    title: String,
     genre: String,
     auditorId: String
 });
