@@ -10,8 +10,8 @@ of audits. */
 const AuditList = props => (
     <Query query={getAuditsQuery}>
         {({ loading, error, data }) => {
-            if (loading) return "Loading...";
-            if (error) return `Error! ${error.message}`;
+            if (loading) return <Card mt={[30, 50]}><Text>Loading...</Text></Card>;
+            if (error) return <Card mt={[30, 50]}><Text>Error! {error.message}</Text></Card>;
 
             return (
                 <main>
