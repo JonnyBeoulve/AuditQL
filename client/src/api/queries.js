@@ -7,6 +7,7 @@ export const getAuditsQuery = gql`
         id
         title
         genre
+        status
     }
 }
 `
@@ -28,6 +29,7 @@ export const getAuditQuery = gql`
             id
             title
             genre
+            status
             auditor {
                 id
                 name

@@ -6,6 +6,8 @@ To start the server, type 'node app' (or 'nodemon app' if you have nodemon insta
 
 Once the server is running, you can perform queries and mutations at the following url: http://localhost:4000/graphql
 
+The front end can be starting by typing 'npm start' in the client folder. You will need to type 'npm install' in the folder first to download dependencies.
+
 ## Programming
 * Node
 * Express

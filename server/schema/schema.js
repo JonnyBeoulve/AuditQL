@@ -11,13 +11,14 @@ const {
     GraphQLNonNull
 } = graphql;
 
-// Define structures.
+// Define fields and resolves.
 const AuditType = new GraphQLObjectType({
     name: 'Audit',
     fields: ( ) => ({
         id: { type: GraphQLString },
         title: { type: GraphQLString },
         genre: { type: GraphQLString },
+        status: { type: GraphQLString },
         auditor: {
             type: AuditorType,
             resolve(parent, args){
@@ -42,7 +43,7 @@ const AuditorType = new GraphQLObjectType({
     })
 });
 
-// Create a root query with the core queries.
+// Create a root query for the primary functional queries.
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
@@ -75,7 +76,7 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
-// Add mutation for adding an auditor.
+// Mutations for adding an auditor and audit.
 const Mutation = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
@@ -98,12 +99,14 @@ const Mutation = new GraphQLObjectType({
             args: {
                 title: { type: new GraphQLNonNull(GraphQLString) },
                 genre: { type: new GraphQLNonNull(GraphQLString) },
+                status: { type: new GraphQLNonNull(GraphQLString) },
                 auditorId: { type: new GraphQLNonNull(GraphQLID) }
             },
             resolve(parent, args){
                 let audit = new Audit({
                     title: args.title,
                     genre: args.genre,
+                    status: args.status,
                     auditorId: args.auditorId
                 });
                 return audit.save();

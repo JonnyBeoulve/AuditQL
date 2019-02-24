@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const auditSchema = new Schema({
     title: String,
     genre: String,
+    status: String,
     auditorId: String
 });
 

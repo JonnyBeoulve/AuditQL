@@ -3,6 +3,10 @@ const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
 const app = express();
+const cors = require('cors');
+
+// Allow cross origin requests.
+app.use(cors());
 
 // Connect Mongoose to MLAB using a public account.
 mongoose.connect('mongodb://auditql-admin:publicPassword123@ds149365.mlab.com:49365/audit-ql', { useNewUrlParser: true })
