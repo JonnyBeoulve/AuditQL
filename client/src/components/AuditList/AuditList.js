@@ -1,6 +1,7 @@
 import React from 'react';
-import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
+
+import { getAuditsQuery } from '../../api/queries';
 
 /* This component will use an unordered list to display a list
 of audits. */
@@ -23,16 +24,5 @@ const AuditList = props => (
         }}
     </Query>
 );
-    
-/* GraphQL query for all audits. */
-const getAuditsQuery = gql`
-{
-    audits {
-        id
-        title
-        genre
-    }
-}
-`
 
 export default AuditList;
