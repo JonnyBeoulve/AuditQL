@@ -9,9 +9,8 @@ class Audits extends Component {
   render() {
     return (
         <div className="main">
-            <GlobalStyle />
-            <h1>Audits</h1>
             <AuditList />
+            <GlobalStyle />
         </div>
     );
   }
