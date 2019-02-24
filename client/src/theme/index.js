@@ -26,7 +26,8 @@ export default {
     border: '#EBEBEB',
   },
   fonts: {
-    sans: 'Open Sans, sans-serif'
+    sans: 'Open Sans, sans-serif',
+    mono: 'Menlo, monospace',
   },
   shadows: {
     small: '0 0 4px rgba(0, 0, 0, .125)',

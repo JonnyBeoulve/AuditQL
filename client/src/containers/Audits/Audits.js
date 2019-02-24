@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { GlobalStyle } from '../../theme';
+import Header from '../../components/Layout/Header/Header';
 import AuditList from '../../components/AuditList/AuditList';
 import AuditDetails from '../../components/AuditDetails/AuditDetails';
 
@@ -17,7 +18,6 @@ class Audits extends Component {
     /* Upon selecting an audit in AuditList, set local state and transition to
     displaying AuditDetails component. */
     selectAudit = (id) => {
-        console.log(id);
         this.setState({ selectedAuditID: id })
     }
 
@@ -25,17 +25,20 @@ class Audits extends Component {
         const { selectedAuditID } = this.state;
 
         return (
-            <div className="main">
-                {(selectedAuditID)
-                    ? <AuditDetails
-                        id={selectedAuditID}
-                        selectAudit={this.selectAudit}
-                    />
-                    : <AuditList
-                        selectAudit={this.selectAudit}
-                    />
-                }
-                <GlobalStyle />
+            <div>
+                <Header />
+                <div className="main">
+                    {(selectedAuditID)
+                        ? <AuditDetails
+                            id={selectedAuditID}
+                            selectAudit={this.selectAudit}
+                        />
+                        : <AuditList
+                            selectAudit={this.selectAudit}
+                        />
+                    }
+                    <GlobalStyle />
+                </div>
             </div>
         );
     }
