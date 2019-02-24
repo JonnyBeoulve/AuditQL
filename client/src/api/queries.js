@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
 /* Query for all audits. */
-const getAuditsQuery = gql`
+export const getAuditsQuery = gql`
 {
     audits {
         id
@@ -12,7 +12,7 @@ const getAuditsQuery = gql`
 `
 
 /* Query for all auditors. */
-const getAuditorsQuery = gql`
+export const getAuditorsQuery = gql`
     {
         auditors {
             name
@@ -22,8 +22,8 @@ const getAuditorsQuery = gql`
 `;
 
 /* Query for a specific audit. */
-const getAuditQuery = gql`
-    query GetAudit($id: ID){
+export const getAuditQuery = gql`
+    query GetAudit($id: String!){
         audit(id: $id) {
             id
             title
@@ -34,12 +34,9 @@ const getAuditQuery = gql`
                 specialization
                 audits {
                     id
-                    name
+                    title
                 }
             }
         }
     }
 `;
-
-
-export { getAuditsQuery, getAuditorsQuery, getAuditQuery };

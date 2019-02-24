@@ -13,10 +13,12 @@ const AuditList = props => (
 
             return (
                 <section id="audit-list">
-                    <h1>Audits</h1>
+                    <h1>All Audits</h1>
                     <ul>
                         {data.audits.map(audit => (
-                            <li key={audit.id}>{audit.title}</li>
+                            <li key={audit.id} onClick={(id) => props.selectAudit(audit.id)}>
+                                {audit.title}
+                            </li>
                         ))}
                     </ul>
                 </section>
