@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 
+/* Render React in DOM element with ID root. */
 ReactDOM.render(<App />, document.getElementById('root'));
-
-serviceWorker.unregister();
