@@ -35,13 +35,13 @@ const AuditorType = new GraphQLObjectType({
         audits: {
             type: new GraphQLList(AuditType),
             resolve(parent, args){
-                //
+                return Audit.find({ auditorId: parent.id })
             }
         }
     })
 });
 
-// Create a root query that grabs all audits from the store.
+// Create a root query with the core queries.
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
@@ -81,7 +81,9 @@ const Mutation = new GraphQLObjectType({
         addAuditor: {
             type: AuditorType,
             args: {
-                name: { type: GraphQLString }
+                name: { type: GraphQLString },
+                specialization: { type: GraphQLString },
+                description: { type: GraphQLString }
             },
             resolve(parent, args){
                 let auditor = new Auditor({
