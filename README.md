@@ -6,7 +6,7 @@ To start the server, type 'node app' (or 'nodemon app' if you have nodemon insta
 
 Once the server is running, you can perform queries and mutations at the following url: http://localhost:4000/graphql
 
-## Programmingll
+## Programming
 * Node
 * Express
 * MongoDB
