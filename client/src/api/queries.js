@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 
-/* GraphQL query for all audits. */
+/* Query for all audits. */
 const getAuditsQuery = gql`
 {
     audits {
@@ -11,4 +11,35 @@ const getAuditsQuery = gql`
 }
 `
 
-export { getAuditsQuery };
+/* Query for all auditors. */
+const getAuditorsQuery = gql`
+    {
+        auditors {
+            name
+            specialization
+        }
+    }
+`;
+
+/* Query for a specific audit. */
+const getAuditQuery = gql`
+    query GetAudit($id: ID){
+        audit(id: $id) {
+            id
+            title
+            genre
+            auditor {
+                id
+                name
+                specialization
+                audits {
+                    id
+                    name
+                }
+            }
+        }
+    }
+`;
+
+
+export { getAuditsQuery, getAuditorsQuery, getAuditQuery };
