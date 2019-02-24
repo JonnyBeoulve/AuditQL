@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Audits from './containers/Audits';
 
 /* Render React in DOM element with ID root. */
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Audits />, document.getElementById('root'));
