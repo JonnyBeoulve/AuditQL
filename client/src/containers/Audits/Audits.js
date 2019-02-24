@@ -4,6 +4,7 @@ import { GlobalStyle } from '../../theme';
 import Header from '../../components/Layout/Header/Header';
 import AuditList from '../../components/AuditList/AuditList';
 import AuditDetails from '../../components/AuditDetails/AuditDetails';
+import { Container } from '../../theme/base';
 
 /* This container will list all audits. This will temporarily serve as the main container of
 the app until the project is expanded in the future. */
@@ -27,7 +28,7 @@ class Audits extends Component {
         return (
             <div>
                 <Header />
-                <div className="main">
+                <Container>
                     {(selectedAuditID)
                         ? <AuditDetails
                             id={selectedAuditID}
@@ -37,8 +38,8 @@ class Audits extends Component {
                             selectAudit={this.selectAudit}
                         />
                     }
-                    <GlobalStyle />
-                </div>
+                </Container>
+                <GlobalStyle />
             </div>
         );
     }

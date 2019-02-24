@@ -1,5 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
+import { Box, Card, Heading, Text } from 'rebass';
+import { RightArrowCircle } from 'styled-icons/boxicons-regular/RightArrowCircle';
 
 import { getAuditsQuery } from '../../api/queries';
 
@@ -12,16 +14,16 @@ const AuditList = props => (
             if (error) return `Error! ${error.message}`;
 
             return (
-                <section id="audit-list">
-                    <h1>All Audits</h1>
-                    <ul>
+                <main>
+                    <Card mt={[30, 50]}>
+                        <Heading mb={3}>All Audits</Heading>
                         {data.audits.map(audit => (
-                            <li key={audit.id} onClick={(id) => props.selectAudit(audit.id)}>
-                                {audit.title}
-                            </li>
+                            <Text key={audit.id} onClick={(id) => props.selectAudit(audit.id)}>
+                                {audit.title} <RightArrowCircle size={18} />
+                            </Text>
                         ))}
-                    </ul>
-                </section>
+                    </Card>
+                </main>
             );
         }}
     </Query>

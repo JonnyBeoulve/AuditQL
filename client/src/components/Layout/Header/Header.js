@@ -11,12 +11,12 @@ const Header = () => (
             <Flex justifyContent={'space-between'} flexDirection={'row'} alignItems={'center'} flexWrap={'nowrap'}>
                 <Box width={[7 / 8]}>AuditQL</Box>
                 <Flex width={[1 / 8]}>
-                    <Box width={[1 / 4]}>
+                    <Box>
                         <Link href="https://www.linkedin.com/in/jleack/">
                             <Image src={linkedinLogo} />
                         </Link>
                     </Box>
-                    <Box width={[1 / 4]} ml={1}>
+                    <Box ml={2}>
                         <Link href="https://github.com/JonnyBeoulve/AuditQL">
                             <Image src={githubLogo} />
                         </Link>
