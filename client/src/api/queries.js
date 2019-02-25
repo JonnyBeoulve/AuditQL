@@ -42,3 +42,15 @@ export const getAuditQuery = gql`
         }
     }
 `;
+
+/* Mutation for adding an audit. */
+export const addAuditMutation = gql`
+    mutation AddAudit($title: String!, $genre: String!, $status: String!, $auditorId: ID!){
+        addAudit(title: $title, genre: $genre, status: $status, auditorId: $auditorId){
+            id
+            title
+            genre
+            status
+        }
+    }
+`;

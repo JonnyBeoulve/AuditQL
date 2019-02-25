@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { graphql, compose } from 'react-apollo';
 import {
     Modal,
     ModalCloseButton,
@@ -15,6 +16,7 @@ import { PlusCircle } from 'styled-icons/boxicons-regular/PlusCircle';
 import { SubTitle } from '../../../theme/base';
 
 import FormInput from '../../Forms/FormInput/FormInput';
+import { getAuditorsQuery, addAuditMutation, getAuditsQuery } from '../../../api/queries';
 
 /* This component includes a button that opens a modal when clicked.
 The modal is styled using Styled Components and Smooth UI. Note that
@@ -124,4 +126,7 @@ class AddAuditModal extends Component {
     }
 }
 
-export default AddAuditModal;
+export default compose(
+    graphql(getAuditorsQuery, { name: "getAuditorsQuery" }),
+    graphql(addAuditMutation, { name: "addAuditMutation" })
+)(AddAuditModal);
