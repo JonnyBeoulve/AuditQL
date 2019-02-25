@@ -52,6 +52,19 @@ class AddAuditModal extends Component {
         this.setState({[name]: value})
     }
 
+    /* Retreive a list of all auditors and list them in the select form item. */
+    listAuditors = () => {
+        let data = this.props.getAuditorsQuery;
+
+        if (data.loading) {
+            return( <option disabled>Loading auditors...</option> );
+        } else {
+            return data.auditors.map(auditor => {
+                return (<option key={auditor.id} value={auditor.id}>{auditor.name}</option>);
+            })
+        }
+    }
+
     render() {
         const {
             buttonText,
@@ -93,12 +106,22 @@ class AddAuditModal extends Component {
                                 <FormInput label="Genre" inputType="text" name={'auditGenre'} value={auditGenre} onChange={this.handleChangeInput} />
                                 <br />
                                 <SubTitle>
-                                    <label>AUDITOR</label>
+                                    <label>STATUS</label>
                                 </SubTitle>
                                 <Select size="md" placeholder="Medium">
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                    <option value="maybe">Maybe</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Complete">Complete</option>
+                                    <option value="Canceled">Canceled</option>
+                                </Select>
+                                <br />
+                                <br />
+                                <SubTitle>
+                                    <label>AUDITOR</label>
+                                </SubTitle>
+                                <Select size="md" placeholder="Name">
+                                    <option>Select auditor</option>
+                                    { this.listAuditors() }
                                 </Select>
                             </ModalBody>
                             <br />
