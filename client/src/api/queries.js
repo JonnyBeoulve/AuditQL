@@ -16,6 +16,7 @@ export const getAuditsQuery = gql`
 export const getAuditorsQuery = gql`
     {
         auditors {
+            id
             name
             specialization
         }

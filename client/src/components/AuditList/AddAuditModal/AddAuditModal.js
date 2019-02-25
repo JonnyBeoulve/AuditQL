@@ -37,7 +37,9 @@ class AddAuditModal extends Component {
         this.state = {
             displayModal: false,
             auditTitle: '',
-            auditGenre: ''
+            auditGenre: '',
+            auditStatus: '',
+            auditAuditor: ''
         };
     }
 
@@ -63,6 +65,24 @@ class AddAuditModal extends Component {
                 return (<option key={auditor.id} value={auditor.id}>{auditor.name}</option>);
             })
         }
+    }
+
+    /* Submit the mutation to add an audit. */
+    handleSubmitAudit = e => {
+        e.preventDefault();
+        const { auditTitle, auditGenre, auditStatus, auditAuditor } = this.state;
+
+        this.props.addAuditMutation({
+            variables: {
+                title: auditTitle,
+                genre: auditGenre,
+                status: auditStatus,
+                auditorId: auditAuditor
+            },
+            refetchQueries: [{ query: getAuditsQuery }]
+        })
+
+        this.handleToggleModal();
     }
 
     render() {
@@ -101,14 +121,11 @@ class AddAuditModal extends Component {
                                 {bodyText}
                                 <br />
                                 <br />
-                                <FormInput label="Title" inputType="text" name={'auditTitle'} value={auditTitle} onChange={this.handleChangeInput} />
-                                <br />
-                                <FormInput label="Genre" inputType="text" name={'auditGenre'} value={auditGenre} onChange={this.handleChangeInput} />
-                                <br />
                                 <SubTitle>
                                     <label>STATUS</label>
                                 </SubTitle>
-                                <Select size="md" placeholder="Medium">
+                                <Select size="md" placeholder="Medium" onChange={(e) => this.setState({ auditStatus: e.target.value })}>
+                                    <option selected disabled>Select status</option>
                                     <option value="Pending">Pending</option>
                                     <option value="Active">Active</option>
                                     <option value="Complete">Complete</option>
@@ -119,17 +136,22 @@ class AddAuditModal extends Component {
                                 <SubTitle>
                                     <label>AUDITOR</label>
                                 </SubTitle>
-                                <Select size="md" placeholder="Name">
-                                    <option>Select auditor</option>
+                                <Select size="md" placeholder="Name" onChange={(e) => this.setState({ auditAuditor: e.target.value })}>
+                                    <option selected disabled>Select auditor</option>
                                     { this.listAuditors() }
                                 </Select>
+                                <br />
+                                <br />
+                                <FormInput label="Title" inputType="text" name={'auditTitle'} value={auditTitle} onChange={this.handleChangeInput} />
+                                <br />
+                                <FormInput label="Genre" inputType="text" name={'auditGenre'} value={auditGenre} onChange={this.handleChangeInput} />
                             </ModalBody>
                             <br />
                             <ModalFooter>
                                 <Button
                                     p="10px 20px"
                                     variant="primary"
-                                    onClick={this.handleSubmitModal}
+                                    onClick={this.handleSubmitAudit}
                                 >
                                     {confirmText}
                                 </Button>
