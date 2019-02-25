@@ -125,7 +125,7 @@ class AddAuditModal extends Component {
                                     <label>STATUS</label>
                                 </SubTitle>
                                 <Select size="md" placeholder="Medium" onChange={(e) => this.setState({ auditStatus: e.target.value })}>
-                                    <option selected disabled>Select status</option>
+                                    <option selected disabled>Select a status</option>
                                     <option value="Pending">Pending</option>
                                     <option value="Active">Active</option>
                                     <option value="Complete">Complete</option>
@@ -134,17 +134,27 @@ class AddAuditModal extends Component {
                                 <br />
                                 <br />
                                 <SubTitle>
+                                    <label>GENRE</label>
+                                </SubTitle>
+                                <Select size="md" placeholder="Name" onChange={(e) => this.setState({ auditGenre: e.target.value })}>
+                                    <option selected disabled>Select a genre</option>
+                                    <option value="Compliance">Compliance</option>
+                                    <option value="Financial">Financial</option>
+                                    <option value="Investigative">Investigative</option>
+                                    <option value="Operational">Operational</option>
+                                </Select>
+                                <br />
+                                <br />
+                                <SubTitle>
                                     <label>AUDITOR</label>
                                 </SubTitle>
                                 <Select size="md" placeholder="Name" onChange={(e) => this.setState({ auditAuditor: e.target.value })}>
-                                    <option selected disabled>Select auditor</option>
+                                    <option selected disabled>Select an auditor</option>
                                     { this.listAuditors() }
                                 </Select>
                                 <br />
                                 <br />
                                 <FormInput label="Title" inputType="text" name={'auditTitle'} value={auditTitle} onChange={this.handleChangeInput} />
-                                <br />
-                                <FormInput label="Genre" inputType="text" name={'auditGenre'} value={auditGenre} onChange={this.handleChangeInput} />
                             </ModalBody>
                             <br />
                             <ModalFooter>
