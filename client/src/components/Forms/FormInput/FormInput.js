@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import {
-    Input
-} from '@smooth-ui/core-sc';
-import {
-  SubTitle,
-} from '../../Base';
+import { Input } from '@smooth-ui/core-sc';
+import { SubTitle } from '../../../theme/base';
 
 /* This is a reusable form input element with passed in props that define
 its label, input type, and more. */
@@ -29,7 +25,7 @@ class FormInput extends Component {
           <label>{label}</label>
         </SubTitle>
         <Input
-          width="100%"
+          width="90%"
           size="md"
           type={inputType}
           name={name}

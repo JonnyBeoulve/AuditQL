@@ -8,9 +8,13 @@ import {
     ModalHeader,
     ModalFooter,
     Typography,
+    Select,
     Button,
 } from '@smooth-ui/core-sc';
 import { PlusCircle } from 'styled-icons/boxicons-regular/PlusCircle';
+import { SubTitle } from '../../../theme/base';
+
+import FormInput from '../../Forms/FormInput/FormInput';
 
 /* This component includes a button that opens a modal when clicked.
 The modal is styled using Styled Components and Smooth UI. Note that
@@ -30,6 +34,8 @@ class AddAuditModal extends Component {
         super(props);
         this.state = {
             displayModal: false,
+            auditTitle: '',
+            auditGenre: ''
         };
     }
 
@@ -37,6 +43,12 @@ class AddAuditModal extends Component {
     handleToggleModal = () => {
         this.setState({ displayModal: !this.state.displayModal });
     };
+
+    /* This function will update state as a user enters information into one of the
+    various form inputs in EditPaitentModalForm. */
+    handleChangeInput = (name, value) => {
+        this.setState({[name]: value})
+    }
 
     render() {
         const {
@@ -48,6 +60,8 @@ class AddAuditModal extends Component {
         } = this.props;
         const {
             displayModal,
+            auditTitle,
+            auditGenre,
         } = this.state;
     
         return (
@@ -70,7 +84,20 @@ class AddAuditModal extends Component {
                             </ModalHeader>
                             <ModalBody>
                                 {bodyText}
-                                
+                                <br />
+                                <br />
+                                <FormInput label="Title" inputType="text" name={'auditTitle'} value={auditTitle} onChange={this.handleChangeInput} />
+                                <br />
+                                <FormInput label="Genre" inputType="text" name={'auditGenre'} value={auditGenre} onChange={this.handleChangeInput} />
+                                <br />
+                                <SubTitle>
+                                    <label>AUDITOR</label>
+                                </SubTitle>
+                                <Select size="md" placeholder="Medium">
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                    <option value="maybe">Maybe</option>
+                                </Select>
                             </ModalBody>
                             <br />
                             <ModalFooter>
