@@ -8,11 +8,10 @@ import {
     ModalContent,
     ModalDialog,
     ModalHeader,
-    Typography,
     Button,
 } from '@smooth-ui/core-sc';
 import { PlusCircle } from 'styled-icons/boxicons-regular/PlusCircle';
-import { ErrorText, Input, Label, Select } from '../../../theme/base';
+import { ErrorText, Input, Label, ModalHeading, ModalText, Select } from '../../../theme/base';
 
 import { getAuditorsQuery, addAuditMutation, getAuditsQuery } from '../../../api/queries';
 
@@ -20,15 +19,12 @@ import { getAuditorsQuery, addAuditMutation, getAuditsQuery } from '../../../api
 The modal is styled using Styled Components and Smooth UI. Note that
 the UI element that the user interacts with to open the modal must
 be defined within this component, as seen at the top of the JSX.
-Additionally, definition of what action needs to occur (AJAX call, etc)
-must be defined within the handleSubmitModal function.
+Formik is used for form logic.
 Props:
 + titleText: Title text of modal.
 + bodyText: Body text of modal.
 + confirmText: Text to display on confirm button.
-+ cancelText: Text to display on cancel button.
-Origin documentation:
-+ https://smooth-ui.smooth-code.com/docs-components-modal */
++ cancelText: Text to display on cancel button. */
 class AddAuditModal extends Component {
     constructor(props) {
         super(props);
@@ -99,14 +95,12 @@ class AddAuditModal extends Component {
                         <ModalContent width="500px">
                             <ModalCloseButton />
                             <ModalHeader>
-                                <Typography variant="h5" m={0}>
+                                <ModalHeading>
                                     {titleText}
-                                </Typography>
+                                </ModalHeading>
                             </ModalHeader>
                             <ModalBody>
-                                {bodyText}
-                                <br />
-                                <br />
+                                <ModalText>{bodyText}</ModalText>
                                 <Formik
                                     initialValues={{ status: '', genre: '', auditor: '', title: '' }}
                                     validate={values => {

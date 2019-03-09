@@ -5,6 +5,9 @@ import { LeftArrowCircle } from 'styled-icons/boxicons-regular/LeftArrowCircle';
 
 import DocumentEditor from '../DocumentEditor/DocumentEditor';
 import { getAuditQuery } from '../../api/queries';
+import { SubHeading, SubTitle } from '../../theme/base';
+import { File } from 'styled-icons/boxicons-regular/File';
+import { ClipboardList } from 'styled-icons/fa-solid/ClipboardList';
 
 /* This component will use an unordered list to display a list
 of audits. */
@@ -21,17 +24,18 @@ const AuditDetails = ({ id, selectAudit }) => (
                             <Heading mb={3}>Audit Details</Heading>
                             <Button bg={'bgPrimary'} fontSize={'1'} onClick={(id) => selectAudit(null)}><LeftArrowCircle size={16} /> Return</Button>
                         </Flex>
-                        <Text fontSize={'1'} color={'darkgrey'}>Title</Text>
-                        <Text mb={3}>{data.audit.title}</Text>
-                        <Text fontSize={'1'} color={'darkgrey'}>Genre</Text>
-                        <Text mb={3}>{data.audit.genre}</Text>
-                        <Text fontSize={'1'} color={'darkgrey'}>Assigned Auditor</Text>
-                        <Text mb={3}>{data.audit.auditor.name}</Text>
-                        <Text fontSize={'1'} color={'darkgrey'}>Assigned Auditor's Specialization</Text>
-                        <Text mb={3}>{data.audit.auditor.specialization}</Text>
-                        <Heading fontSize={3} mt={5} mb={3}>Documents</Heading>
-                        <Text mb={3}>There are currently no documents assigned to this audit.</Text>
-                        <Text mb={3} mt={4} fontSize={'1'} color={'darkgrey'}>Add Document</Text>
+                        <SubHeading><ClipboardList size={24} /> Vitals</SubHeading>
+                        <SubTitle>Title</SubTitle>
+                        <Text mb={4}>{data.audit.title}</Text>
+                        <SubTitle>Genre</SubTitle>
+                        <Text mb={4}>{data.audit.genre}</Text>
+                        <SubTitle>Assigned Auditor</SubTitle>
+                        <Text mb={4}>{data.audit.auditor.name}</Text>
+                        <SubTitle>Assigned Auditor's Specialization</SubTitle>
+                        <Text mb={4}>{data.audit.auditor.specialization}</Text>
+                        <SubHeading><File size={24} /> Documents</SubHeading>
+                        <Text mb={4}>There are currently no documents assigned to this audit. You can add one using the editor below.</Text>
+                        <SubTitle>Add Document</SubTitle>
                         <Box>
                             <DocumentEditor />
                         </Box>

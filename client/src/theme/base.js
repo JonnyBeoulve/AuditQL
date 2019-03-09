@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box, Text } from 'rebass';
+import { Box, Heading, Text } from 'rebass';
 
 /* This file contains commonly used styling attributes for the 
 Styled Components implementation of this project. */
@@ -7,21 +7,35 @@ export const Container = styled(Box)`
   max-width: 1024px;
 `;
 
-Container.defaultProps = {
-  mx: 'auto'
-};
-
 export const Wrapper = styled.main`
   min-height: 100vh;
   background-color: #f6f5f6;
   background-size: cover;
 `;
 
-export const SubTitle = styled(Text)({
-  fontSize: '0.6em',
-  color: '#898989',
-  fontWeight: 'bold'
-});
+export const SubHeading = styled(Text)`
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: #333;
+  font-weight: bold;
+`;
+
+export const SubTitle = styled(Text)`
+  margin-bottom: 5px;
+  font-size: 0.8em;
+  color: #898989;
+`;
+
+/* Modal styling. */
+export const ModalHeading = styled(Heading)`
+  font-size: 1.5em;
+  color: #333;
+`;
+
+export const ModalText = styled(Text)`
+  font-size: 1em;
+  color: #333;
+`;
 
 /* Form styling. */
 export const Label = styled.label`
@@ -57,3 +71,18 @@ export const Select = styled.select`
 export const ErrorText = styled(Text)`
   color: red;
 `
+
+/* Default props. */
+Container.defaultProps = {
+  mx: 'auto'
+};
+
+Heading.defaultProps = {
+  marginBottom: '15px',
+  fontSize: '2em',
+  color: '#222'
+}
+
+Text.defaultProps = {
+  color: '#333'
+}

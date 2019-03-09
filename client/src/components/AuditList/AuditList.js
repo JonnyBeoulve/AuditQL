@@ -5,6 +5,7 @@ import { RightArrowCircle } from 'styled-icons/boxicons-regular/RightArrowCircle
 
 import { getAuditsQuery } from '../../api/queries';
 import AddAuditModal from './AddAuditModal/AddAuditModal';
+import { AuditListText } from './auditListStyling';
 
 /* This component will use an unordered list to display a list
 of audits. */
@@ -28,9 +29,9 @@ const AuditList = props => (
                             />
                         </Flex>
                         {data.audits.map(audit => (
-                            <Text mb={3} key={audit.id} onClick={(id) => props.selectAudit(audit.id)}>
-                                <RightArrowCircle size={16} /> {audit.title}
-                            </Text>
+                            <AuditListText mb={3} key={audit.id} onClick={(id) => props.selectAudit(audit.id)}>
+                                <RightArrowCircle size={18} /> {audit.title}
+                            </AuditListText>
                         ))}
                     </Card>
                 </main>
