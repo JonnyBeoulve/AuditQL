@@ -25,9 +25,10 @@ export const SubTitle = styled(Text)({
 
 /* Form styling. */
 export const Input = styled.input`
-  width: 100%;
-  height: 35px;
+  width: 90%;
+  padding: 10px 10px 10px 10px;
   border: 1px solid #ccc;
+  border-radius: 5px;
   background-color: #fff;
 `;
 

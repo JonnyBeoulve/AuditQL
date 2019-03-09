@@ -122,17 +122,14 @@ class AddAuditModal extends Component {
 
                                         return errors;
                                     }}
-                                    onSubmit={(values, { setSubmitting }) => {
-                                        setTimeout(() => {
-                                        alert(JSON.stringify(values, null, 2));
-                                        setSubmitting(false);
-                                        }, 400);
+                                    onSubmit={values => {
+                                        console.log(values)
                                     }}
-                                    >
-                                    {({ values, errors, isSubmitting }) => (
+                                >
+                                    {({ touched, values, errors,handleChange, handleBlur, handleSubmit }) => (
                                         <Form>
                                             <Label>
-                                                STATUS *
+                                                STATUS
                                                 {errors.status && <ErrorText>{errors.status}</ErrorText>}
                                                 <Field name="status" component="select">
                                                     <option selected disabled>Select a status</option>
@@ -142,7 +139,7 @@ class AddAuditModal extends Component {
                                                 </Field>
                                             </Label>
                                             <Label>
-                                                GENRE *
+                                                GENRE
                                                 {errors.genre && <ErrorText>{errors.genre}</ErrorText>}
                                                 <Field name="name" component="select">
                                                     <option selected disabled>Select a genre</option>
@@ -153,7 +150,7 @@ class AddAuditModal extends Component {
                                                 </Field>
                                             </Label>
                                             <Label>
-                                                AUDITOR *
+                                                AUDITOR
                                                 {errors.auditor && <ErrorText>{errors.auditor}</ErrorText>}
                                                 <Field name="auditor" component="select">
                                                     <option selected disabled>Select an auditor</option>
@@ -161,16 +158,21 @@ class AddAuditModal extends Component {
                                                 </Field>
                                             </Label>
                                             <Label>
-                                                TITLE *
+                                                TITLE
                                                 {errors.title && <ErrorText>{errors.title}</ErrorText>}
-                                                <Field type="text" name="title" />
+                                                <Input
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.title}
+                                                    type="text"
+                                                    name="title"
+                                                />
                                             </Label>
                                             <Button
                                                 type="submit"
                                                 p="10px 20px"
                                                 mr="5px"
                                                 variant="primary"
-                                                disabled={isSubmitting}
                                             >
                                                 {confirmText}
                                             </Button>
