@@ -123,11 +123,32 @@ class AddAuditModal extends Component {
                                         return errors;
                                     }}
                                     onSubmit={values => {
-                                        console.log(values)
+                                        this.props.addAuditMutation({
+                                            variables: {
+                                                title: values.title,
+                                                genre: values.genre,
+                                                status: values.status,
+                                                auditorId: values.auditor
+                                            },
+                                            refetchQueries: [{ query: getAuditsQuery }]
+                                        })
+
+                                        this.handleToggleModal();
                                     }}
                                 >
                                     {({ touched, values, errors,handleChange, handleBlur, handleSubmit }) => (
                                         <Form Submit={handleSubmit}>
+                                            <Label>
+                                                TITLE
+                                                {touched.title && errors.title && <ErrorText>{errors.title}</ErrorText>}
+                                                <Input
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.title}
+                                                    type="text"
+                                                    name="title"
+                                                />
+                                            </Label>
                                             <Label>
                                                 STATUS
                                                 {touched.status && errors.status && <ErrorText>{errors.status}</ErrorText>}
@@ -175,20 +196,10 @@ class AddAuditModal extends Component {
                                                     { this.listAuditors() }
                                                 </Select>
                                             </Label>
-                                            <Label>
-                                                TITLE
-                                                {touched.title && errors.title && <ErrorText>{errors.title}</ErrorText>}
-                                                <Input
-                                                    onChange={handleChange}
-                                                    onBlur={handleBlur}
-                                                    value={values.title}
-                                                    type="text"
-                                                    name="title"
-                                                />
-                                            </Label>
                                             <Button
                                                 type="submit"
                                                 p="10px 20px"
+                                                mt="20px"
                                                 mr="5px"
                                                 variant="primary"
                                             >
@@ -196,6 +207,7 @@ class AddAuditModal extends Component {
                                             </Button>
                                             <Button
                                                 p="10px 20px "
+                                                mt="20px"
                                                 variant="light"
                                                 onClick={this.handleToggleModal}
                                             >

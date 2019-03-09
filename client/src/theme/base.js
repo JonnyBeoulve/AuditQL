@@ -26,7 +26,7 @@ export const SubTitle = styled(Text)({
 /* Form styling. */
 export const Label = styled.label`
   position: relative;
-  margin: 1em 0;
+  margin: 1.5em 0;
   font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
@@ -40,16 +40,18 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
-  color: #333;
+  color: #555;
+  font-size: 1em;
 `;
 
 export const Select = styled.select`
-  width: 90%;
-  padding: 5px 10px 5px 10px;
+  width: 95%;
+  padding: 10px 10px 10px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #fff;
-  color: #333;
+  color: #555;
+  font-size: 1em;
 `;
 
 export const ErrorText = styled(Text)`
