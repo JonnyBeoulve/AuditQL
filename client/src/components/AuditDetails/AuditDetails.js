@@ -35,7 +35,6 @@ const AuditDetails = ({ id, selectAudit }) => (
                         <Text mb={4}>{data.audit.auditor.specialization}</Text>
                         <SubHeading><File size={24} /> Documents</SubHeading>
                         <Text mb={4}>There are currently no documents assigned to this audit. You can add one using the editor below.</Text>
-                        <SubTitle>Add Document</SubTitle>
                         <Box>
                             <DocumentEditor />
                         </Box>

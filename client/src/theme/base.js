@@ -72,6 +72,18 @@ export const ErrorText = styled(Text)`
   color: red;
 `
 
+/* Prose Mirror styling. */
+export const ProseMirror = styled(Box)`
+  
+  & .ProseMirror {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #eee;
+    color: #333;
+    border: 1px solid #ccc;
+    box-shadow: 2px 4px 8px 0 rgba(46,61,73,.2);
+  }
+`
+
 /* Default props. */
 Container.defaultProps = {
   mx: 'auto'

@@ -4,9 +4,10 @@ import { Flex, Box, Image, Link } from 'rebass';
 import { Container } from '../../../theme/base';
 import linkedinLogo from '../../../static/img/linkedin-logo.png';
 import githubLogo from '../../../static/img/github-logo.png';
+import { HeaderBox } from './headerStyling';
 
 const Header = () => (
-    <Box p={3} bg={'bgPrimary'} fontSize={6} color={'white'} width={[1]}>
+    <HeaderBox p={3} bg={'bgPrimary'} fontSize={6} color={'white'} width={[1]}>
         <Container>
             <Flex justifyContent={'space-between'} flexDirection={'row'} alignItems={'center'} flexWrap={'nowrap'}>
                 <Box width={[7 / 8]}>AuditQL</Box>
@@ -24,7 +25,7 @@ const Header = () => (
                 </Flex>
             </Flex>
         </Container>
-    </Box>
+    </HeaderBox>
 )
 
 export default Header;
