@@ -24,14 +24,6 @@ export const SubTitle = styled(Text)({
 });
 
 /* Form styling. */
-export const Input = styled.input`
-  width: 90%;
-  padding: 10px 10px 10px 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-`;
-
 export const Label = styled.label`
   position: relative;
   margin: 1em 0;
@@ -42,11 +34,22 @@ export const Label = styled.label`
   font-size: 0.8em;
 `;
 
-export const Select = styled.input`
-  width: 100%;
-  height: 35px;
+export const Input = styled.input`
+  width: 90%;
+  padding: 10px 10px 10px 10px;
   border: 1px solid #ccc;
+  border-radius: 5px;
   background-color: #fff;
+  color: #333;
+`;
+
+export const Select = styled.select`
+  width: 90%;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
 `;
 
 export const ErrorText = styled(Text)`

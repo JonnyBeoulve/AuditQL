@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { Form, Formik, Field } from 'formik';
+import { Form, Formik } from 'formik';
 import {
     Modal,
     ModalCloseButton,
@@ -108,12 +108,12 @@ class AddAuditModal extends Component {
                                 <br />
                                 <br />
                                 <Formik
-                                    initialValues={{ status: '', name: '', auditor: '', title: '' }}
+                                    initialValues={{ status: '', genre: '', auditor: '', title: '' }}
                                     validate={values => {
                                         let errors = {};
                                         if (!values.status) { errors.status = 'A status is required'; }
 
-                                        if (!values.name) { errors.name = 'A name is required'; }
+                                        if (!values.genre) { errors.genre = 'A genre is required'; }
 
                                         if (!values.auditor) { errors.auditor = 'An auditor is required'; }
 
@@ -127,39 +127,57 @@ class AddAuditModal extends Component {
                                     }}
                                 >
                                     {({ touched, values, errors,handleChange, handleBlur, handleSubmit }) => (
-                                        <Form>
+                                        <Form Submit={handleSubmit}>
                                             <Label>
                                                 STATUS
-                                                {errors.status && <ErrorText>{errors.status}</ErrorText>}
-                                                <Field name="status" component="select">
-                                                    <option selected disabled>Select a status</option>
+                                                {touched.status && errors.status && <ErrorText>{errors.status}</ErrorText>}
+                                                <Select
+                                                    component="select"
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.status}
+                                                    name="status"
+                                                >
+                                                    <option selected disabled value="">Select a status</option>
                                                     <option value="Active">Active</option>
                                                     <option value="Complete">Complete</option>
                                                     <option value="Canceled">Canceled</option>
-                                                </Field>
+                                                </Select>
                                             </Label>
                                             <Label>
                                                 GENRE
-                                                {errors.genre && <ErrorText>{errors.genre}</ErrorText>}
-                                                <Field name="name" component="select">
-                                                    <option selected disabled>Select a genre</option>
+                                                {touched.genre && errors.genre && <ErrorText>{errors.genre}</ErrorText>}
+                                                <Select
+                                                    component="select"
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.genre}
+                                                    name="genre"
+                                                >
+                                                    <option selected disabled value="">Select a genre</option>
                                                     <option value="Compliance">Compliance</option>
                                                     <option value="Financial">Financial</option>
                                                     <option value="Investigative">Investigative</option>
                                                     <option value="Operational">Operational</option>
-                                                </Field>
+                                                </Select>
                                             </Label>
                                             <Label>
                                                 AUDITOR
-                                                {errors.auditor && <ErrorText>{errors.auditor}</ErrorText>}
-                                                <Field name="auditor" component="select">
-                                                    <option selected disabled>Select an auditor</option>
+                                                {touched.auditor && errors.auditor && <ErrorText>{errors.auditor}</ErrorText>}
+                                                <Select
+                                                    component="select"
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.auditor}
+                                                    name="auditor"
+                                                >
+                                                    <option selected disabled value="">Select an auditor</option>
                                                     { this.listAuditors() }
-                                                </Field>
+                                                </Select>
                                             </Label>
                                             <Label>
                                                 TITLE
-                                                {errors.title && <ErrorText>{errors.title}</ErrorText>}
+                                                {touched.title && errors.title && <ErrorText>{errors.title}</ErrorText>}
                                                 <Input
                                                     onChange={handleChange}
                                                     onBlur={handleBlur}
