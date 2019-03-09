@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { graphql, compose } from 'react-apollo';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import {
     Modal,
     ModalCloseButton,
@@ -7,9 +8,7 @@ import {
     ModalContent,
     ModalDialog,
     ModalHeader,
-    ModalFooter,
     Typography,
-    Select,
     Button,
 } from '@smooth-ui/core-sc';
 import { PlusCircle } from 'styled-icons/boxicons-regular/PlusCircle';
@@ -36,10 +35,6 @@ class AddAuditModal extends Component {
         super(props);
         this.state = {
             displayModal: false,
-            auditTitle: '',
-            auditGenre: '',
-            auditStatus: '',
-            auditAuditor: ''
         };
     }
 
@@ -47,12 +42,6 @@ class AddAuditModal extends Component {
     handleToggleModal = () => {
         this.setState({ displayModal: !this.state.displayModal });
     };
-
-    /* This function will update state as a user enters information into one of the
-    various form inputs in EditPaitentModalForm. */
-    handleChangeInput = (name, value) => {
-        this.setState({[name]: value})
-    }
 
     /* Retreive a list of all auditors and list them in the select form item. */
     listAuditors = () => {
@@ -95,7 +84,6 @@ class AddAuditModal extends Component {
         } = this.props;
         const {
             displayModal,
-            auditTitle,
         } = this.state;
     
         return (
@@ -120,58 +108,88 @@ class AddAuditModal extends Component {
                                 {bodyText}
                                 <br />
                                 <br />
-                                <SubTitle>
-                                    <label>STATUS</label>
-                                </SubTitle>
-                                <Select size="md" placeholder="Medium" onChange={(e) => this.setState({ auditStatus: e.target.value })}>
-                                    <option selected disabled>Select a status</option>
-                                    <option value="Pending">Pending</option>
-                                    <option value="Active">Active</option>
-                                    <option value="Complete">Complete</option>
-                                    <option value="Canceled">Canceled</option>
-                                </Select>
-                                <br />
-                                <br />
-                                <SubTitle>
-                                    <label>GENRE</label>
-                                </SubTitle>
-                                <Select size="md" placeholder="Name" onChange={(e) => this.setState({ auditGenre: e.target.value })}>
-                                    <option selected disabled>Select a genre</option>
-                                    <option value="Compliance">Compliance</option>
-                                    <option value="Financial">Financial</option>
-                                    <option value="Investigative">Investigative</option>
-                                    <option value="Operational">Operational</option>
-                                </Select>
-                                <br />
-                                <br />
-                                <SubTitle>
-                                    <label>AUDITOR</label>
-                                </SubTitle>
-                                <Select size="md" placeholder="Name" onChange={(e) => this.setState({ auditAuditor: e.target.value })}>
-                                    <option selected disabled>Select an auditor</option>
-                                    { this.listAuditors() }
-                                </Select>
-                                <br />
-                                <br />
-                                <FormInput label="Title" inputType="text" name={'auditTitle'} value={auditTitle} onChange={this.handleChangeInput} />
+                                <Formik
+                                    initialValues={{ status: '', name: '', auditor: '', title: '' }}
+                                    validate={values => {
+                                        let errors = {};
+                                        if (!values.status) { errors.status = 'A status is required'; }
+
+                                        if (!values.name) { errors.name = 'A name is required'; }
+
+                                        if (!values.auditor) { errors.auditor = 'An auditor is required'; }
+
+                                        if (!values.title) { errors.title = 'A title is required.'; }
+                                        else if (values.title.length > 40) { errors.title = 'Title length limit is 40 characters.'; }
+
+                                        return errors;
+                                    }}
+                                    onSubmit={(values, { setSubmitting }) => {
+                                        setTimeout(() => {
+                                        alert(JSON.stringify(values, null, 2));
+                                        setSubmitting(false);
+                                        }, 400);
+                                    }}
+                                    >
+                                    {({ values, isSubmitting }) => (
+                                        <Form>
+                                            <SubTitle>
+                                                <label>STATUS</label>
+                                            </SubTitle>
+                                            <Field name="status" component="select">
+                                                <option selected disabled>Select a status</option>
+                                                <option value="Active">Active</option>
+                                                <option value="Complete">Complete</option>
+                                                <option value="Canceled">Canceled</option>
+                                            </Field>
+                                            <ErrorMessage name="status" component="div" />
+                                            <br />
+                                            <br />
+                                            <SubTitle>
+                                                <label>GENRE</label>
+                                            </SubTitle>
+                                            <Field name="name" component="select">
+                                                <option selected disabled>Select a genre</option>
+                                                <option value="Compliance">Compliance</option>
+                                                <option value="Financial">Financial</option>
+                                                <option value="Investigative">Investigative</option>
+                                                <option value="Operational">Operational</option>
+                                            </Field>
+                                            <ErrorMessage name="name" component="div" />
+                                            <br />
+                                            <br />
+                                            <SubTitle>
+                                                <label>AUDITOR</label>
+                                            </SubTitle>
+                                            <Field name="auditor" component="select">
+                                                <option selected disabled>Select an auditor</option>
+                                                { this.listAuditors() }
+                                            </Field>
+                                            <ErrorMessage name="auditor" component="div" />
+                                            <br />
+                                            <br />
+                                            <Field label="Title" type="text" name="title" />
+                                            <ErrorMessage name="title" component="div" />
+                                            <br />
+                                            <br />
+                                            <Button
+                                                type="submit"
+                                                p="10px 20px"
+                                                variant="primary"
+                                                disabled={isSubmitting}
+                                            >
+                                                {confirmText}
+                                            </Button>
+                                            <Button
+                                                p="10px 20px "
+                                                variant="light"
+                                                onClick={this.handleToggleModal}
+                                            >
+                                                {cancelText}
+                                            </Button>
+                                        </Form>
+                                    )}
+                                </Formik>
                             </ModalBody>
-                            <br />
-                            <ModalFooter>
-                                <Button
-                                    p="10px 20px"
-                                    variant="primary"
-                                    onClick={this.handleSubmitAudit}
-                                >
-                                    {confirmText}
-                                </Button>
-                                <Button
-                                    p="10px 20px "
-                                    variant="light"
-                                    onClick={this.handleToggleModal}
-                                >
-                                    {cancelText}
-                                </Button>
-                            </ModalFooter>
                         </ModalContent>
                     </ModalDialog>
                 </Modal>
