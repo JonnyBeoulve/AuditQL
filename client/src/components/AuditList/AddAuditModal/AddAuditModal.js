@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Form, Formik, Field, ErrorMessage } from 'formik';
 import {
     Modal,
     ModalCloseButton,
@@ -12,9 +12,8 @@ import {
     Button,
 } from '@smooth-ui/core-sc';
 import { PlusCircle } from 'styled-icons/boxicons-regular/PlusCircle';
-import { SubTitle } from '../../../theme/base';
+import { ErrorText, Input, Label, Select } from '../../../theme/base';
 
-import FormInput from '../../Forms/FormInput/FormInput';
 import { getAuditorsQuery, addAuditMutation, getAuditsQuery } from '../../../api/queries';
 
 /* This component includes a button that opens a modal when clicked.
@@ -130,23 +129,21 @@ class AddAuditModal extends Component {
                                         }, 400);
                                     }}
                                     >
-                                    {({ values, isSubmitting }) => (
+                                    {({ values, errors, isSubmitting }) => (
                                         <Form>
-                                            <SubTitle>
-                                                <label>STATUS</label>
-                                            </SubTitle>
-                                            <Field name="status" component="select">
-                                                <option selected disabled>Select a status</option>
-                                                <option value="Active">Active</option>
-                                                <option value="Complete">Complete</option>
-                                                <option value="Canceled">Canceled</option>
-                                            </Field>
-                                            <ErrorMessage name="status" component="div" />
+                                            <Label>
+                                                STATUS *
+                                                {errors.status && <ErrorText>{errors.status}</ErrorText>}
+                                                <Field name="status" component="select">
+                                                    <option selected disabled>Select a status</option>
+                                                    <option value="Active">Active</option>
+                                                    <option value="Complete">Complete</option>
+                                                    <option value="Canceled">Canceled</option>
+                                                </Field>
+                                            </Label>
                                             <br />
                                             <br />
-                                            <SubTitle>
                                                 <label>GENRE</label>
-                                            </SubTitle>
                                             <Field name="name" component="select">
                                                 <option selected disabled>Select a genre</option>
                                                 <option value="Compliance">Compliance</option>
@@ -157,9 +154,7 @@ class AddAuditModal extends Component {
                                             <ErrorMessage name="name" component="div" />
                                             <br />
                                             <br />
-                                            <SubTitle>
                                                 <label>AUDITOR</label>
-                                            </SubTitle>
                                             <Field name="auditor" component="select">
                                                 <option selected disabled>Select an auditor</option>
                                                 { this.listAuditors() }
@@ -174,6 +169,7 @@ class AddAuditModal extends Component {
                                             <Button
                                                 type="submit"
                                                 p="10px 20px"
+                                                mr="5px"
                                                 variant="primary"
                                                 disabled={isSubmitting}
                                             >

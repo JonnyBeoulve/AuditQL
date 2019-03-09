@@ -22,3 +22,32 @@ export const SubTitle = styled(Text)({
   color: '#898989',
   fontWeight: 'bold'
 });
+
+/* Form styling. */
+export const Input = styled.input`
+  width: 100%;
+  height: 35px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+`;
+
+export const Label = styled.label`
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: #777;
+  font-size: 0.8em;
+  margin: 0.5em 0;
+  position: relative;
+`;
+
+export const Select = styled.input`
+  width: 100%;
+  height: 35px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+`;
+
+export const ErrorText = styled(Text)`
+  color: red;
+`
