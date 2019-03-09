@@ -32,13 +32,13 @@ export const Input = styled.input`
 `;
 
 export const Label = styled.label`
+  position: relative;
+  margin: 1em 0;
   font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
-  color: #777;
+  color: #898989;
   font-size: 0.8em;
-  margin: 0.5em 0;
-  position: relative;
 `;
 
 export const Select = styled.input`

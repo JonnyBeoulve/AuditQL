@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { graphql, compose } from 'react-apollo';
-import { Form, Formik, Field, ErrorMessage } from 'formik';
+import { Form, Formik, Field } from 'formik';
 import {
     Modal,
     ModalCloseButton,
@@ -141,31 +141,30 @@ class AddAuditModal extends Component {
                                                     <option value="Canceled">Canceled</option>
                                                 </Field>
                                             </Label>
-                                            <br />
-                                            <br />
-                                                <label>GENRE</label>
-                                            <Field name="name" component="select">
-                                                <option selected disabled>Select a genre</option>
-                                                <option value="Compliance">Compliance</option>
-                                                <option value="Financial">Financial</option>
-                                                <option value="Investigative">Investigative</option>
-                                                <option value="Operational">Operational</option>
-                                            </Field>
-                                            <ErrorMessage name="name" component="div" />
-                                            <br />
-                                            <br />
-                                                <label>AUDITOR</label>
-                                            <Field name="auditor" component="select">
-                                                <option selected disabled>Select an auditor</option>
-                                                { this.listAuditors() }
-                                            </Field>
-                                            <ErrorMessage name="auditor" component="div" />
-                                            <br />
-                                            <br />
-                                            <Field label="Title" type="text" name="title" />
-                                            <ErrorMessage name="title" component="div" />
-                                            <br />
-                                            <br />
+                                            <Label>
+                                                GENRE *
+                                                {errors.genre && <ErrorText>{errors.genre}</ErrorText>}
+                                                <Field name="name" component="select">
+                                                    <option selected disabled>Select a genre</option>
+                                                    <option value="Compliance">Compliance</option>
+                                                    <option value="Financial">Financial</option>
+                                                    <option value="Investigative">Investigative</option>
+                                                    <option value="Operational">Operational</option>
+                                                </Field>
+                                            </Label>
+                                            <Label>
+                                                AUDITOR *
+                                                {errors.auditor && <ErrorText>{errors.auditor}</ErrorText>}
+                                                <Field name="auditor" component="select">
+                                                    <option selected disabled>Select an auditor</option>
+                                                    { this.listAuditors() }
+                                                </Field>
+                                            </Label>
+                                            <Label>
+                                                TITLE *
+                                                {errors.title && <ErrorText>{errors.title}</ErrorText>}
+                                                <Field type="text" name="title" />
+                                            </Label>
                                             <Button
                                                 type="submit"
                                                 p="10px 20px"
