@@ -1,11 +1,11 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import { Box, Button, Card, Flex, Heading, Text } from 'rebass';
+import { Box, Card, Flex, Heading, Text } from 'rebass';
 import { LeftArrowCircle } from 'styled-icons/boxicons-regular/LeftArrowCircle';
 
 import DocumentEditor from '../DocumentEditor/DocumentEditor';
 import { getAuditQuery } from '../../api/queries';
-import { SubHeading, SubTitle } from '../../theme/base';
+import { DefaultButton, SubHeading, SubTitle } from '../../theme/base';
 import { File } from 'styled-icons/boxicons-regular/File';
 import { ClipboardList } from 'styled-icons/fa-solid/ClipboardList';
 
@@ -22,7 +22,7 @@ const AuditDetails = ({ id, selectAudit }) => (
                     <Card mt={[30, 50]}>
                         <Flex width={1} justifyContent={'space-between'}>
                             <Heading mb={3}>Audit Details</Heading>
-                            <Button bg={'bgPrimary'} fontSize={'1'} onClick={(id) => selectAudit(null)}><LeftArrowCircle size={16} /> Return</Button>
+                            <DefaultButton onClick={(id) => selectAudit(null)}><LeftArrowCircle size={16} /> Return</DefaultButton>
                         </Flex>
                         <SubHeading><ClipboardList size={24} /> Vitals</SubHeading>
                         <SubTitle>Title</SubTitle>

@@ -4,7 +4,7 @@ import { Card, Flex, Heading, Text } from 'rebass';
 import { RightArrowCircle } from 'styled-icons/boxicons-regular/RightArrowCircle';
 
 import { getAuditsQuery } from '../../api/queries';
-import AddAuditModal from './AddAuditModal/AddAuditModal';
+import AddAuditModal from '../Modals/AddAuditModal/AddAuditModal';
 import { AuditListText } from './auditListStyling';
 
 /* This component will use an unordered list to display a list

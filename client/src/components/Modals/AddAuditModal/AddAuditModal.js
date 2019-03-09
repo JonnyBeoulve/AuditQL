@@ -11,7 +11,7 @@ import {
     Button,
 } from '@smooth-ui/core-sc';
 import { PlusCircle } from 'styled-icons/boxicons-regular/PlusCircle';
-import { ErrorText, Input, Label, ModalHeading, ModalText, Select } from '../../../theme/base';
+import { DefaultButton, ErrorText, Input, Label, ModalHeading, ModalText, Select } from '../../../theme/base';
 
 import { getAuditorsQuery, addAuditMutation, getAuditsQuery } from '../../../api/queries';
 
@@ -83,13 +83,9 @@ class AddAuditModal extends Component {
     
         return (
             <Fragment>
-                <Button
-                    bg={'bgPrimary'}
-                    fontSize={'1'}
-                    onClick={this.handleToggleModal}
-                >
+                <DefaultButton onClick={this.handleToggleModal} >
                     <PlusCircle size={16} /> {buttonText}
-                </Button>
+                </DefaultButton>
                 <Modal opened={displayModal} onClose={this.handleToggleModal}>
                     <ModalDialog alignItems="center" justifyContent="center">
                         <ModalContent width="500px">

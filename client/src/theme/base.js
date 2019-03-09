@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box, Heading, Text } from 'rebass';
+import { Box, Button, Heading, Text } from 'rebass';
 
 /* This file contains commonly used styling attributes for the 
 Styled Components implementation of this project. */
@@ -26,10 +26,24 @@ export const SubTitle = styled(Text)`
   color: #898989;
 `;
 
+export const DefaultButton = styled(Button)`
+  padding: 0 20px 0 20px;
+  background-color: #2aba90;
+  color: white;
+  font-size: 0.8em;
+  box-shadow: 2px 4px 8px 0 rgba(46,61,73,.2);
+
+  &:hover {
+    box-shadow: 2px 4px 8px 0 rgba(46,61,73,.4);
+    cursor: pointer;
+  }
+`;
+
 /* Modal styling. */
 export const ModalHeading = styled(Heading)`
   font-size: 1.5em;
   color: #333;
+  font-weight: normal;
 `;
 
 export const ModalText = styled(Text)`
@@ -55,7 +69,7 @@ export const Input = styled.input`
   border-radius: 5px;
   background-color: #fff;
   color: #555;
-  font-size: 1em;
+  font-size: 1.2em;
 `;
 
 export const Select = styled.select`
@@ -65,7 +79,7 @@ export const Select = styled.select`
   border-radius: 5px;
   background-color: #fff;
   color: #555;
-  font-size: 1em;
+  font-size: 1.2em;
 `;
 
 export const ErrorText = styled(Text)`
