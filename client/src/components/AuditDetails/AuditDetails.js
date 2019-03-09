@@ -1,9 +1,9 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import { Button, Card, Flex, Heading, Text } from 'rebass';
+import { Box, Button, Card, Flex, Heading, Text } from 'rebass';
 import { LeftArrowCircle } from 'styled-icons/boxicons-regular/LeftArrowCircle';
-import { PlusCircle } from 'styled-icons/boxicons-regular/PlusCircle';
 
+import DocumentEditor from '../DocumentEditor/DocumentEditor';
 import { getAuditQuery } from '../../api/queries';
 
 /* This component will use an unordered list to display a list
@@ -29,11 +29,12 @@ const AuditDetails = ({ id, selectAudit }) => (
                         <Text mb={3}>{data.audit.auditor.name}</Text>
                         <Text fontSize={'1'} color={'darkgrey'}>Assigned Auditor's Specialization</Text>
                         <Text mb={3}>{data.audit.auditor.specialization}</Text>
-                        <Flex width={1} justifyContent={'space-between'}>
-                            <Heading fontSize={3} mt={1} mb={3}>Documents</Heading>
-                            <Button bg={'bgPrimary'} pt={8} pb={8} fontSize={'1'} onClick={(id) => selectAudit(null)}><PlusCircle size={16} /> Add Document</Button>
-                        </Flex>
+                        <Heading fontSize={3} mt={5} mb={3}>Documents</Heading>
                         <Text mb={3}>There are currently no documents assigned to this audit.</Text>
+                        <Text mb={3} mt={4} fontSize={'1'} color={'darkgrey'}>Add Document</Text>
+                        <Box>
+                            <DocumentEditor />
+                        </Box>
                     </Card>
                 </main>
             );
