@@ -28,7 +28,7 @@ const AuditList = props => (
                             />
                         </Flex>
                         {data.audits.map(audit => (
-                            <Text mb={2} key={audit.id} onClick={(id) => props.selectAudit(audit.id)}>
+                            <Text mb={3} key={audit.id} onClick={(id) => props.selectAudit(audit.id)}>
                                 <RightArrowCircle size={16} /> {audit.title}
                             </Text>
                         ))}

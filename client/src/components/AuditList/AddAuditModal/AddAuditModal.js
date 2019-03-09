@@ -96,7 +96,6 @@ class AddAuditModal extends Component {
         const {
             displayModal,
             auditTitle,
-            auditGenre,
         } = this.state;
     
         return (
