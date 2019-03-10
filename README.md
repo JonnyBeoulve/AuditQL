@@ -15,6 +15,8 @@ The front end can be starting by typing 'npm start' in the client folder. You wi
 * GraphQL
 * React
 * Apollo
+* D3
+* Formik
 * Styled Components
 
 ## Notes
