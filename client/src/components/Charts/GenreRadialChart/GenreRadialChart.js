@@ -1,6 +1,7 @@
 import React from 'react';
 import { RadialChart } from 'react-vis';
 
+/* This will display a radial chart that shows popularity of genres. */
 const GenreRadialChart = ({ data }) => {
 
     /* Determine number of audits per genre for D3 graph. */

@@ -3,7 +3,7 @@ import { Text } from 'rebass';
 
 /* This file contains commonly used styling attributes for the 
 Styled Components implementation of this project. */
-export const AuditListText = styled(Text)`
+export const AuditText = styled(Text)`
   font-size: 1.2em;
   color: #555;
   align-items: center;

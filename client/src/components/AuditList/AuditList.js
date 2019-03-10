@@ -1,13 +1,12 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import { Box, Card, Flex, Heading, Text } from 'rebass';
-import { RightArrowCircle } from 'styled-icons/boxicons-regular/RightArrowCircle';
 import { DocumentText } from 'styled-icons/typicons/DocumentText';
 import { Table } from 'styled-icons/boxicons-regular/Table';
 
 import GenreRadialChart from '../Charts/GenreRadialChart/GenreRadialChart';
+import AuditListText from './AuditListText/AuditListText';
 import { getAuditsQuery } from '../../api/queries';
-import { AuditListText } from './auditListStyling';
 import { DefaultButton } from '../../theme/base';
 import AddAuditModal from '../Modals/AddAuditModal/AddAuditModal';
 
@@ -36,15 +35,10 @@ const AuditList = props => (
                                 />
                             </Flex>
                         </Flex>
-                        <Flex mb={50} width={1} flexWrap={'wrap'} flexDirection={'row'} justifyContent={'space-between'}>
-                            {data.audits.map(audit => (
-                                <Box width={300}>
-                                    <AuditListText mb={4} key={audit.id} onClick={() => props.selectAudit(audit.id)}>
-                                        <RightArrowCircle size={18} /> {audit.title}
-                                    </AuditListText>
-                                </Box>
-                            ))}
-                        </Flex>
+                        <AuditListText
+                            data={data}
+                            selectAudit={props.selectAudit}
+                        />
                         <Box mb={50}>
                             <Heading mb={3}>Audit Genre Frequency</Heading>
                             <GenreRadialChart data={data} />
