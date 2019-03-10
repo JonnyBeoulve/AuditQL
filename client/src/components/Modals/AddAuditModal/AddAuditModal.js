@@ -83,7 +83,7 @@ class AddAuditModal extends Component {
     
         return (
             <Fragment>
-                <DefaultButton onClick={this.handleToggleModal} >
+                <DefaultButton ml={10} onClick={this.handleToggleModal} >
                     <PlusCircle size={16} /> {buttonText}
                 </DefaultButton>
                 <Modal opened={displayModal} onClose={this.handleToggleModal}>

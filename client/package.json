@@ -6,6 +6,8 @@
     "@aeaton/react-prosemirror": "^0.21.1",
     "@aeaton/react-prosemirror-config-default": "^0.11.0",
     "@smooth-ui/core-sc": "^9.0.2",
+    "ag-grid-community": "^20.1.0",
+    "ag-grid-react": "^20.1.1",
     "apollo-boost": "^0.1.28",
     "formik": "^1.5.1",
     "graphql": "^14.1.1",

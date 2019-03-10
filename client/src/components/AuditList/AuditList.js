@@ -3,18 +3,14 @@ import { Query } from 'react-apollo';
 import { Box, Card, Flex, Heading, Text } from 'rebass';
 import { RightArrowCircle } from 'styled-icons/boxicons-regular/RightArrowCircle';
 import { RadialChart } from 'react-vis';
+import { DocumentText } from 'styled-icons/typicons/DocumentText';
+import { Table } from 'styled-icons/boxicons-regular/Table';
 import '../../../node_modules/react-vis/dist/style.css';
 
 import { getAuditsQuery } from '../../api/queries';
-import AddAuditModal from '../Modals/AddAuditModal/AddAuditModal';
 import { AuditListText } from './auditListStyling';
-
-/*const myData = [
-    { angle: 1, radius: 10 },
-    { angle: 2, label: 'Super Custom label', subLabel: 'With annotation', radius: 20 },
-    { angle: 5, radius: 5, label: 'Alt Label' }, { angle: 3, radius: 14 },
-    { angle: 5, radius: 12, subLabel: 'Sub Label only', className: 'custom-class' }
-];*/
+import { DefaultButton } from '../../theme/base';
+import AddAuditModal from '../Modals/AddAuditModal/AddAuditModal';
 
 /* This component will use an unordered list to display a list
 of audits. */
@@ -51,13 +47,17 @@ const AuditList = props => (
                     <Card mt={[30, 50]} mb={50}>
                          <Flex width={1} justifyContent={'space-between'}>
                             <Heading>All Audits</Heading>
-                            <AddAuditModal
-                                buttonText={"Add Audit"}
-                                titleText={"Add an audit"}
-                                bodyText={"Enter the parameters for the audit below."}
-                                confirmText={"Submit"}
-                                cancelText={"Cancel"}
-                            />
+                            <Flex justifyContent={'flex-end'}>
+                                <DefaultButton><DocumentText size={16} /></DefaultButton>
+                                <DefaultButton ml={10}><Table size={16} /></DefaultButton>
+                                <AddAuditModal
+                                    buttonText={"Add Audit"}
+                                    titleText={"Add an audit"}
+                                    bodyText={"Enter the parameters for the audit below."}
+                                    confirmText={"Submit"}
+                                    cancelText={"Cancel"}
+                                />
+                            </Flex>
                         </Flex>
                         <Flex mb={50} width={1} flexWrap={'wrap'} flexDirection={'row'} justifyContent={'space-between'}>
                             {data.audits.map(audit => (

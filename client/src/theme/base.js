@@ -108,7 +108,7 @@ Container.defaultProps = {
 
 Heading.defaultProps = {
   mr: '20px',
-  mb: '20px',
+  mb: '40px',
   fontSize: '2em',
   color: '#222'
 }
