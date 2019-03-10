@@ -1,6 +1,6 @@
 import React from 'react';
 import { Query } from 'react-apollo';
-import { Card, Flex, Heading, Text } from 'rebass';
+import { Box, Card, Flex, Heading, Text } from 'rebass';
 import { RightArrowCircle } from 'styled-icons/boxicons-regular/RightArrowCircle';
 import { RadialChart } from 'react-vis';
 import '../../../node_modules/react-vis/dist/style.css';
@@ -48,7 +48,7 @@ const AuditList = props => (
 
             return (
                 <main>
-                    <Card mt={[30, 50]}>
+                    <Card mt={[30, 50]} mb={50}>
                          <Flex width={1} justifyContent={'space-between'}>
                             <Heading mb={3}>All Audits</Heading>
                             <AddAuditModal
@@ -59,18 +59,22 @@ const AuditList = props => (
                                 cancelText={"Cancel"}
                             />
                         </Flex>
-                        {data.audits.map(audit => (
-                            <AuditListText mb={3} key={audit.id} onClick={(id) => props.selectAudit(audit.id)}>
-                                <RightArrowCircle size={18} /> {audit.title}
-                            </AuditListText>
-                        ))}
-                        <Heading mb={3}>Audit Genre Frequency</Heading>
-                        <RadialChart
-                            showLabels={true}
-                            data={auditChartData}
-                            width={400}
-                            height={400}
-                        />
+                        <Box mb={50}>
+                            {data.audits.map(audit => (
+                                <AuditListText mb={4} key={audit.id} onClick={() => props.selectAudit(audit.id)}>
+                                    <RightArrowCircle size={18} /> {audit.title}
+                                </AuditListText>
+                            ))}
+                        </Box>
+                        <Box mb={50}>
+                            <Heading mb={3}>Audit Genre Frequency</Heading>
+                            <RadialChart
+                                showLabels={true}
+                                data={auditChartData}
+                                width={400}
+                                height={400}
+                            />
+                        </Box>
                     </Card>
                 </main>
             );

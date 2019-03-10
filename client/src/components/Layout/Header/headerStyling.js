@@ -4,7 +4,7 @@ import { Box } from 'rebass';
 /* This file contains commonly used styling attributes for the 
 Styled Components implementation of this project. */
 export const HeaderBox = styled(Box)`
-    padding: 30px;
+    padding: 20px;
     background-color: #2aba90;
     color: white;
     width: 100%;
