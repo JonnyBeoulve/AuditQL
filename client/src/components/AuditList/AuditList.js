@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import { Box, Card, Flex, Heading, Text } from 'rebass';
 import { DocumentText } from 'styled-icons/typicons/DocumentText';
 import { Table } from 'styled-icons/boxicons-regular/Table';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import { getAuditsQuery } from '../../api/queries';
 import { DefaultButton } from '../../theme/base';
@@ -16,7 +17,7 @@ will either be text or table depending upon a togglable state housed in the pare
 const AuditList = ({ auditListFormat, selectAudit, selectAuditListFormat }) => (
     <Query query={getAuditsQuery}>
         {({ loading, error, data }) => {
-            if (loading) return <Card mt={[30, 50]}><Text>Loading...</Text></Card>;
+            if (loading) return <Flex mt={[30, 50]} justifyContent={'center'}><ClipLoader sizeUnit={"px"} size={200} color={'#00abbd'} loading={loading} /></Flex>;
             if (error) return <Card mt={[30, 50]}><Text>Error! {error.message}</Text></Card>;
 
             return (

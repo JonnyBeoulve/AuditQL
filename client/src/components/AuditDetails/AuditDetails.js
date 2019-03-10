@@ -2,6 +2,7 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { Box, Card, Flex, Heading, Text } from 'rebass';
 import { LeftArrowCircle } from 'styled-icons/boxicons-regular/LeftArrowCircle';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import DocumentEditor from '../DocumentEditor/DocumentEditor';
 import { getAuditQuery } from '../../api/queries';
@@ -14,8 +15,8 @@ of audits. */
 const AuditDetails = ({ id, selectAudit }) => (
     <Query query={getAuditQuery} variables={{ id }}>
         {({ loading, error, data }) => {
-            if (loading) return <Card mt={[30, 50]}><Text>Loading...</Text></Card>;
-            if (error) return <Card mt={[30, 50]}><Text>Error! {error.message}</Text></Card>;
+            if (loading) return <Flex mt={[30, 50]} justifyContent={'center'}><ClipLoader sizeUnit={"px"} size={200} color={'#00abbd'} loading={loading} /></Flex>;
+            if (error) return <Flex mt={[30, 50]}><Text>Error! {error.message}</Text></Flex>;
 
             return (
                 <main>
