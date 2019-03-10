@@ -4,14 +4,15 @@ import { Box, Card, Flex, Heading, Text } from 'rebass';
 import { DocumentText } from 'styled-icons/typicons/DocumentText';
 import { Table } from 'styled-icons/boxicons-regular/Table';
 
-import GenreRadialChart from '../Charts/GenreRadialChart/GenreRadialChart';
-import AuditListText from './AuditListText/AuditListText';
 import { getAuditsQuery } from '../../api/queries';
 import { DefaultButton } from '../../theme/base';
+import GenreRadialChart from '../Charts/GenreRadialChart/GenreRadialChart';
+import AuditListText from './AuditListText/AuditListText';
 import AddAuditModal from '../Modals/AddAuditModal/AddAuditModal';
+import AuditListGraph from '../Graphs/AuditListGraph/AuditListGraph';
 
-/* This component will use an unordered list to display a list
-of audits. */
+/* This component will display a list of audits and a graph. The format of the list
+will either be text or table depending upon a togglable state housed in the parent component. */
 const AuditList = ({ auditListFormat, selectAudit, selectAuditListFormat }) => (
     <Query query={getAuditsQuery}>
         {({ loading, error, data }) => {
@@ -24,11 +25,11 @@ const AuditList = ({ auditListFormat, selectAudit, selectAuditListFormat }) => (
                          <Flex width={1} justifyContent={'space-between'}>
                             <Heading>All Audits</Heading>
                             <Flex justifyContent={'flex-end'}>
-                                <DefaultButton>
-                                    <DocumentText size={16} onClick={() => selectAuditListFormat(0)} />
+                                <DefaultButton ml={'5px'}>
+                                    <Table size={16} onClick={() => selectAuditListFormat(0)} />
                                 </DefaultButton>
-                                <DefaultButton ml={10}>
-                                    <Table size={16} onClick={() => selectAuditListFormat(1)} />
+                                <DefaultButton ml={'5px'}>
+                                    <DocumentText size={16} onClick={() => selectAuditListFormat(1)} />
                                 </DefaultButton>
                                 <AddAuditModal
                                     buttonText={"Add Audit"}
@@ -45,7 +46,9 @@ const AuditList = ({ auditListFormat, selectAudit, selectAuditListFormat }) => (
                                 selectAudit={selectAudit}
                             />
                         ) : (
-                                null
+                            <AuditListGraph
+                                data={data.audits}
+                            />
                         )
                         }
                         <Box mb={50}>
