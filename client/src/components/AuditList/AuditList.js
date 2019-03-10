@@ -50,7 +50,7 @@ const AuditList = props => (
                 <main>
                     <Card mt={[30, 50]} mb={50}>
                          <Flex width={1} justifyContent={'space-between'}>
-                            <Heading mb={3}>All Audits</Heading>
+                            <Heading>All Audits</Heading>
                             <AddAuditModal
                                 buttonText={"Add Audit"}
                                 titleText={"Add an audit"}
@@ -59,13 +59,15 @@ const AuditList = props => (
                                 cancelText={"Cancel"}
                             />
                         </Flex>
-                        <Box mb={50}>
+                        <Flex mb={50} width={1} flexWrap={'wrap'} flexDirection={'row'} justifyContent={'space-between'}>
                             {data.audits.map(audit => (
-                                <AuditListText mb={4} key={audit.id} onClick={() => props.selectAudit(audit.id)}>
-                                    <RightArrowCircle size={18} /> {audit.title}
-                                </AuditListText>
+                                <Box width={300}>
+                                    <AuditListText mb={4} key={audit.id} onClick={() => props.selectAudit(audit.id)}>
+                                        <RightArrowCircle size={18} /> {audit.title}
+                                    </AuditListText>
+                                </Box>
                             ))}
-                        </Box>
+                        </Flex>
                         <Box mb={50}>
                             <Heading mb={3}>Audit Genre Frequency</Heading>
                             <RadialChart

@@ -4,9 +4,10 @@ import { Text } from 'rebass';
 /* This file contains commonly used styling attributes for the 
 Styled Components implementation of this project. */
 export const AuditListText = styled(Text)`
-  max-width: 300px;
   font-size: 1.2em;
   color: #555;
+  align-items: center;
+  text-align: left;
 
   &:hover {
       cursor: pointer;

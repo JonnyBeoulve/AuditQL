@@ -30,7 +30,10 @@ export const DefaultButton = styled(Button)`
   padding: 0 20px 0 20px;
   background-color: #2aba90;
   color: white;
-  font-size: 0.8em;
+  font-size: 0.9em;
+  border-radius: 5px;
+  height: 40px;
+  line-height: 40px;
   box-shadow: 2px 4px 8px 0 rgba(46,61,73,.2);
 
   &:hover {
@@ -104,7 +107,8 @@ Container.defaultProps = {
 };
 
 Heading.defaultProps = {
-  marginBottom: '15px',
+  mr: '20px',
+  mb: '20px',
   fontSize: '2em',
   color: '#222'
 }
