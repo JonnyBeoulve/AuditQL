@@ -25,10 +25,10 @@ const AuditList = ({ auditListFormat, selectAudit, selectAuditListFormat }) => (
                          <Flex width={1} justifyContent={'space-between'}>
                             <Heading>All Audits</Heading>
                             <Flex justifyContent={'flex-end'}>
-                                <DefaultButton ml={'5px'} onClick={() => selectAuditListFormat(0)}>
+                                <DefaultButton ml={'5px'} style={{ backgroundColor: !auditListFormat ? '#00abbd' : null}} onClick={() => selectAuditListFormat(0)}>
                                     <Table size={16} />
                                 </DefaultButton>
-                                <DefaultButton ml={'5px'} onClick={() => selectAuditListFormat(1)}>
+                                <DefaultButton ml={'5px'} style={{ backgroundColor: auditListFormat ? '#00abbd' : null}} onClick={() => selectAuditListFormat(1)}>
                                     <DocumentText size={16} />
                                 </DefaultButton>
                                 <AddAuditModal

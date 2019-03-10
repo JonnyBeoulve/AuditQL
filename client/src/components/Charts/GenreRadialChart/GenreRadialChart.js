@@ -30,7 +30,7 @@ const GenreRadialChart = ({ data }) => {
         <RadialChart
             showLabels={true}
             data={auditChartData}
-            width={400}
+            width={500}
             height={400}
         />
     )
