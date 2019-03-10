@@ -14,6 +14,7 @@ import { PlusCircle } from 'styled-icons/boxicons-regular/PlusCircle';
 import { DefaultButton, ErrorText, Input, Label, ModalHeading, ModalText, Select } from '../../../theme/base';
 
 import { getAuditorsQuery, addAuditMutation, getAuditsQuery } from '../../../api/queries';
+import { AddAuditSchema } from '../../../api/schemas';
 
 /* This component includes a button that opens a modal when clicked.
 The modal is styled using Styled Components and Smooth UI. Note that
@@ -99,19 +100,7 @@ class AddAuditModal extends Component {
                                 <ModalText>{bodyText}</ModalText>
                                 <Formik
                                     initialValues={{ status: '', genre: '', auditor: '', title: '' }}
-                                    validate={values => {
-                                        let errors = {};
-                                        if (!values.status) { errors.status = 'A status is required'; }
-
-                                        if (!values.genre) { errors.genre = 'A genre is required'; }
-
-                                        if (!values.auditor) { errors.auditor = 'An auditor is required'; }
-
-                                        if (!values.title) { errors.title = 'A title is required.'; }
-                                        else if (values.title.length > 40) { errors.title = 'Title length limit is 40 characters.'; }
-
-                                        return errors;
-                                    }}
+                                    validationSchema={AddAuditSchema}
                                     onSubmit={values => {
                                         this.props.addAuditMutation({
                                             variables: {
