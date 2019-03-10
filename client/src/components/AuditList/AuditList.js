@@ -12,7 +12,7 @@ import AddAuditModal from '../Modals/AddAuditModal/AddAuditModal';
 
 /* This component will use an unordered list to display a list
 of audits. */
-const AuditList = props => (
+const AuditList = ({ auditListFormat, selectAudit, selectAuditListFormat }) => (
     <Query query={getAuditsQuery}>
         {({ loading, error, data }) => {
             if (loading) return <Card mt={[30, 50]}><Text>Loading...</Text></Card>;
@@ -24,8 +24,12 @@ const AuditList = props => (
                          <Flex width={1} justifyContent={'space-between'}>
                             <Heading>All Audits</Heading>
                             <Flex justifyContent={'flex-end'}>
-                                <DefaultButton><DocumentText size={16} /></DefaultButton>
-                                <DefaultButton ml={10}><Table size={16} /></DefaultButton>
+                                <DefaultButton>
+                                    <DocumentText size={16} onClick={() => selectAuditListFormat(0)} />
+                                </DefaultButton>
+                                <DefaultButton ml={10}>
+                                    <Table size={16} onClick={() => selectAuditListFormat(1)} />
+                                </DefaultButton>
                                 <AddAuditModal
                                     buttonText={"Add Audit"}
                                     titleText={"Add an audit"}
@@ -35,10 +39,15 @@ const AuditList = props => (
                                 />
                             </Flex>
                         </Flex>
-                        <AuditListText
-                            data={data}
-                            selectAudit={props.selectAudit}
-                        />
+                        {(auditListFormat) ? (
+                            <AuditListText
+                                data={data}
+                                selectAudit={selectAudit}
+                            />
+                        ) : (
+                                null
+                        )
+                        }
                         <Box mb={50}>
                             <Heading mb={3}>Audit Genre Frequency</Heading>
                             <GenreRadialChart data={data} />

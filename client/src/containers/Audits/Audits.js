@@ -6,13 +6,15 @@ import AuditList from '../../components/AuditList/AuditList';
 import AuditDetails from '../../components/AuditDetails/AuditDetails';
 import { Container } from '../../theme/base';
 
-/* This container will list all audits. This will temporarily serve as the main container of
-the app until the project is expanded in the future. */
+/* This container will either display a list of audits or the details for a given audit depending
+on the present state.
++ auditListFormat: 0 for table, 1 for text list. */
 class Audits extends Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedAuditID: null,
+            auditListFormat: 1
         }
     }
 
@@ -22,8 +24,13 @@ class Audits extends Component {
         this.setState({ selectedAuditID: id })
     }
 
+    /* Upon selecting the text or table button, toggle the display type. */
+    selectAuditListFormat = (newFormat) => {
+        this.setState({ auditListFormat: newFormat})
+    }
+
     render() {
-        const { selectedAuditID } = this.state;
+        const { selectedAuditID, auditListFormat } = this.state;
 
         return (
             <div>
@@ -37,7 +44,9 @@ class Audits extends Component {
                         ) : (
                             <Fragment>
                                 <AuditList
+                                    auditListFormat={auditListFormat}
                                     selectAudit={this.selectAudit}
+                                    selectAuditListFormat={this.selectAuditListFormat}
                                 />
                             </Fragment>
                     )}

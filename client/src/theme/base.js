@@ -14,6 +14,7 @@ export const Wrapper = styled.main`
 `;
 
 export const SubHeading = styled(Text)`
+  margin-top: 10px;
   margin-bottom: 10px;
   font-size: 1em;
   color: #333;
