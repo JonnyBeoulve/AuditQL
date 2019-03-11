@@ -22,11 +22,6 @@ const AuditListGraph = ({ data, selectAudit }) => {
         }, {
             headerName: 'View More',
             field: 'id',
-            cellRenderer: (params) => {
-                return (
-                    `<a href="/#/audit/${params.value}">Details</a>`
-                )
-            }
         }
     ]
     

@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Audits from '../../containers/Audits/Audits';
 
@@ -8,11 +8,11 @@ By default, and when an error occurs, the Login page will be loaded.
 To add a path, consider using the following syntax:
 <Route exact(OPTIONAL) path={'/URLNAME'} component={COMPONENTNAME} /> */
 const Routing = ({ location }) => (
-    <HashRouter>
+    <BrowserRouter>
         <Switch location={location}>
             <Route path='/' name='Audits' component={Audits} />
         </Switch>
-    </HashRouter>
+    </BrowserRouter>
 )
 
 export default Routing
