@@ -2,26 +2,36 @@ import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 
 /* This will display a list of audits and their associated data using AG Grid. */
-const AuditListGraph = ({ data }) => {
-    const columnDefs = [{
-        headerName: 'Title',
-        field: 'title',
-        sortable: true,
-        filter: true,
-    }, {
-        headerName: 'Genre',
-        field: 'genre',
-        sortable: true,
-        filter: true,
-    }, {
-        headerName: 'Status',
-        field: 'status',
-        sortable: true,
-        filter: true,
-        }]
+const AuditListGraph = ({ data, selectAudit }) => {
+    const columnDefs = [
+        {
+            headerName: 'Title',
+            field: 'title',
+            sortable: true,
+            filter: true,
+        }, {
+            headerName: 'Genre',
+            field: 'genre',
+            sortable: true,
+            filter: true,
+        }, {
+            headerName: 'Status',
+            field: 'status',
+            sortable: true,
+            filter: true,
+        }, {
+            headerName: 'View More',
+            field: 'id',
+            cellRenderer: (params) => {
+                return (
+                    `<a href="/#/audit/${params.value}">Details</a>`
+                )
+            }
+        }
+    ]
     
     const defaultColDef = {
-        width: 300,
+        width: 220,
         editable: true,
         filter: 'agTextColumnFilter'
     };

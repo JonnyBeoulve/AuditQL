@@ -49,6 +49,7 @@ const AuditList = ({ auditListFormat, selectAudit, selectAuditListFormat }) => (
                         ) : (
                             <AuditListGraph
                                 data={data.audits}
+                                selectAudit={selectAudit}
                             />
                         )
                         }
