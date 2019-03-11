@@ -23,7 +23,7 @@ const AuditDetails = ({ id, selectAudit }) => (
                     <Card mt={[30, 50]}>
                         <Flex width={1} justifyContent={'space-between'}>
                             <Heading mb={3}>Audit Details</Heading>
-                            <DefaultButton onClick={(id) => selectAudit(null)}><LeftArrowCircle size={16} /> Return</DefaultButton>
+                            <DefaultButton onClick={(id) => selectAudit('')}><LeftArrowCircle size={16} /> Return</DefaultButton>
                         </Flex>
                         <SubHeading><ClipboardList size={24} /> Vitals</SubHeading>
                         <SubTitle>Title</SubTitle>

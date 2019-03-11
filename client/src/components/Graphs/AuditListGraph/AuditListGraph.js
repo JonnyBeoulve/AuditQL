@@ -2,7 +2,7 @@ import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
 
 /* This will display a list of audits and their associated data using AG Grid. */
-const AuditListGraph = ({ data, selectAudit }) => {
+const AuditListGraph = ({ data }) => {
     const columnDefs = [
         {
             headerName: 'Title',
@@ -19,9 +19,6 @@ const AuditListGraph = ({ data, selectAudit }) => {
             field: 'status',
             sortable: true,
             filter: true,
-        }, {
-            headerName: 'View More',
-            field: 'id',
         }
     ]
     
