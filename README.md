@@ -1,5 +1,5 @@
 # AuditQL
-This project is for a fictional auditing company. Using GraphQL for API definition on a Node, Express, and MongoDB based back end with React, Apollo, and Styled Components on the front end, it will allow users to assign auditors to various audit projects and define their parameters.
+This project is for a fictional auditing company. Using GraphQL on a Node, Express, and MongoDB based back end with React, Apollo, and Styled Components on the front end, it allows users to assign auditors to various audit projects and define their parameters.
 
 ## How to Use
 To start the server, type 'node app' (or 'nodemon app' if you have nodemon installed) in the server folder.
