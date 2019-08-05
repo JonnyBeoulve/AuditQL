@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Text } from 'rebass';
+import styled from "styled-components";
+import { Text } from "rebass";
 
 /* This file contains commonly used styling attributes for the 
 Styled Components implementation of this project. */
@@ -10,7 +10,7 @@ export const AuditText = styled(Text)`
   text-align: left;
 
   &:hover {
-      cursor: pointer;
-      color: #2aba90;
+    cursor: pointer;
+    color: #2aba90;
   }
 `;

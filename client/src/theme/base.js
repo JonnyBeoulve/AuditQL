@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Box, Button, Heading, Text } from 'rebass';
+import styled from "styled-components";
+import { Box, Button, Heading, Text } from "rebass";
 
 /* This file contains commonly used styling attributes for the 
 Styled Components implementation of this project. */
@@ -35,10 +35,10 @@ export const DefaultButton = styled(Button)`
   border-radius: 5px;
   height: 40px;
   line-height: 40px;
-  box-shadow: 2px 4px 8px 0 rgba(46,61,73,.2);
+  box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
 
   &:hover {
-    box-shadow: 2px 4px 8px 0 rgba(46,61,73,.4);
+    box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.4);
     cursor: pointer;
   }
 `;
@@ -88,32 +88,31 @@ export const Select = styled.select`
 
 export const ErrorText = styled(Text)`
   color: red;
-`
+`;
 
 /* Prose Mirror styling. */
 export const ProseMirror = styled(Box)`
-  
   & .ProseMirror {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     background-color: #eee;
     color: #333;
     border: 1px solid #ccc;
-    box-shadow: 2px 4px 8px 0 rgba(46,61,73,.2);
+    box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
   }
-`
+`;
 
 /* Default props. */
 Container.defaultProps = {
-  mx: 'auto'
+  mx: "auto"
 };
 
 Heading.defaultProps = {
-  mr: '20px',
-  mb: '40px',
-  fontSize: '2em',
-  color: '#222'
-}
+  mr: "20px",
+  mb: "40px",
+  fontSize: "2em",
+  color: "#222"
+};
 
 Text.defaultProps = {
-  color: '#333'
-}
+  color: "#333"
+};

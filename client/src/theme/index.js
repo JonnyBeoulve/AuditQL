@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import { theme } from '@smooth-ui/core-sc';
+import { createGlobalStyle } from "styled-components";
+import { theme } from "@smooth-ui/core-sc";
 
 export const GlobalStyle = createGlobalStyle`
   @font-face: 
@@ -15,22 +15,22 @@ export const GlobalStyle = createGlobalStyle`
 
 export default {
   ...theme,
-  breakpoints: ['40em', '52em', '64em'],
+  breakpoints: ["40em", "52em", "64em"],
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
-  primary: '#2aba90',
+  primary: "#2aba90",
   colors: {
-    bgPrimary: '#2aba90',
-    bgSecondary: '#00abbd',
-    bgLight: '#FBFBFB',
-    bg: '#f6f5f6',
-    border: '#EBEBEB',
+    bgPrimary: "#2aba90",
+    bgSecondary: "#00abbd",
+    bgLight: "#FBFBFB",
+    bg: "#f6f5f6",
+    border: "#EBEBEB"
   },
   fonts: {
-    sans: 'Open Sans, sans-serif',
-    mono: 'Menlo, monospace',
+    sans: "Open Sans, sans-serif",
+    mono: "Menlo, monospace"
   },
   shadows: {
-    small: '0 0 4px rgba(0, 0, 0, .125)',
-    large: '0 0 24px rgba(0, 0, 0, .125)'
+    small: "0 0 4px rgba(0, 0, 0, .125)",
+    large: "0 0 24px rgba(0, 0, 0, .125)"
   }
 };
